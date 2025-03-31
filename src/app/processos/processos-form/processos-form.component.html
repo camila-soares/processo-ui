@@ -1,0 +1,67 @@
+<h1 class="mt-4">Processos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ processo.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+<div class="container">
+    <form #processoForm="ngForm" (ngSubmit)="onSubmit"> 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Processo Salvo/Atualizado com sucesso!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Npu: *</label>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="processo.npu" name="npu" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="estado">UF: *</label>
+                    <select  [(ngModel)]="processo.uf" name="uf" class="form-control" (change)="onChangeUf()">
+                        <option  *ngFor="let estado of estados" [ngValue]="estado.sigla">
+                          {{ estado.nome }}
+                        </option>
+                      </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="municipio">MUNICIPIO: *</label>
+                    <select  [(ngModel)]="processo.municipio" name="municipio" class="form-control">
+                        <option  *ngFor="let cidade of cidades" [ngValue]="cidade.nome">
+                         {{ cidade.nome }}
+                        </option>
+                      </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Documento: *</label>
+                    <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />                  
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success" (click)="onSubmit()" *ngIf="!processo.id">
+                    <i class="fa fa-save"></i>Salvar
+                </button>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()" *ngIf="processo.id">
+                    <i class="fa fa-sync-alt"></i>Atualizar
+                </button>
+
+                <button type="button" class="btn btn-danger ml-1" (click)="voltar()">
+                    <i class="fa fa-arrow-alt-circle-left"></i>Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

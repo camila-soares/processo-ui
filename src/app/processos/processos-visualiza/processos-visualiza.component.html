@@ -1,0 +1,16 @@
+<h1 class="mt-4">Processos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Detalhes</li>
+</ol>
+<div *ngIf="processo">
+    <h2>Detalhes do Processo</h2>
+    <p><strong>NPU:</strong> {{ processo.npu }}</p>
+    <p><strong>UF:</strong> {{ processo.uf }}</p>
+    <p><strong>MUNICIPIO</strong> {{processo.municipio}}</p>
+    <p><strong>DATA CADASTRO</strong> {{processo.dataCadastro}}</p>dataVisualizacao
+    <p><strong>DATA VISUALIZACAO</strong> {{processo.dataVisualizacao}}</p>
+    <p><strong>Documento:</strong> {{ processo.documentos[0].nome }} </p>
+  </div>
+  <button type="button" class="btn btn-danger ml-1" (click)="voltar()">
+    <i class="fa fa-arrow-alt-circle-left"></i>Voltar
+</button>
