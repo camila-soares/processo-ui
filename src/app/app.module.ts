@@ -1,4 +1,3 @@
-import { TokenInterceptor } from './../interceptors/token.interceptor';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +17,7 @@ import { ProcessosRoutingModule } from './processos/processos-routing.module';
 import { ProcessosListaComponent } from './processos/processos-lista/processos-lista.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProcessosVisualizaComponent } from './processos/processos-visualiza/processos-visualiza.component';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 
 Amplify.configure({
     Auth:{
